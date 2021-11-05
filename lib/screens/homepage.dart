@@ -49,6 +49,7 @@ class HomePage extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
+                    subtitle: Text(post[i].body),
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
