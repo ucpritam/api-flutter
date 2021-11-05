@@ -38,12 +38,12 @@ class HomePage extends StatelessWidget {
           } else if (snapshot.hasData) {
             List<Post>? post = snapshot.data;
             return ListView.builder(
-              itemCount: post!.length,
+              itemCount: post?.length,
               itemBuilder: (context, i) {
                 return Card(
                   child: ListTile(
                     title: Text(
-                      post[i].title,
+                      post![i].title,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
