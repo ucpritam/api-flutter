@@ -49,6 +49,7 @@ class CommentPage extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
+                    subtitle: Text(data[i].body),
                   ),
                 );
               },
