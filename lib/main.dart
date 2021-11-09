@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'API',
       debugShowCheckedModeBanner: false,
       home: HomePage(
-        title: 'Posts',
+        title: 'API',
       ),
     );
   }

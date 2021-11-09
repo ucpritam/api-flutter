@@ -1,72 +1,54 @@
-import 'dart:async';
-import 'dart:convert';
+import 'package:api_app/screens/posts.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import './comments.dart';
-import '../models/post_model.dart';
+import '../screens/albums.dart';
 
-Future<List<Post>> fetchPost() async {
-  final response =
-      await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
-  if (response.statusCode == 200) {
-    List jsonResponse = json.decode(response.body);
-    return jsonResponse.map((post) => Post.fromJson(post)).toList();
-  } else {
-    throw Exception('failed');
-  }
-}
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  final screens = [
+    const PostPage(),
+    const AlbumPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
-      body: FutureBuilder<List<Post>>(
-        future: fetchPost(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Center(
-              child: Text('An error has occurred!'),
-            );
-          } else if (snapshot.hasData) {
-            List<Post>? post = snapshot.data;
-            return ListView.builder(
-              itemCount: post?.length,
-              itemBuilder: (context, i) {
-                return Card(
-                  child: ListTile(
-                    title: Text(
-                      post![i].title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    subtitle: Text(post[i].body),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => CommentPage(id: post[i].id),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+      body: SafeArea(child: screens[_selectedIndex]),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.post_add),
+            label: 'Posts',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.photo),
+            label: 'Album',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
