@@ -38,12 +38,12 @@ class CommentPage extends StatelessWidget {
           } else if (snapshot.hasData) {
             List<Comment>? data = snapshot.data;
             return ListView.builder(
-              itemCount: data!.length,
+              itemCount: data?.length,
               itemBuilder: (context, i) {
                 return Card(
                   child: ListTile(
                     title: Text(
-                      data[i].name,
+                      data![i].name,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
