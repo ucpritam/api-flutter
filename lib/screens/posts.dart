@@ -17,50 +17,60 @@ Future<List<Post>> fetchPost() async {
   }
 }
 
-class PostPage extends StatelessWidget {
+class PostPage extends StatefulWidget {
   const PostPage({Key? key}) : super(key: key);
 
   @override
+  State<PostPage> createState() => _PostPageState();
+}
+
+class _PostPageState extends State<PostPage> {
+  @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Post>>(
-      future: fetchPost(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Center(
-            child: Text('An error has occurred!'),
-          );
-        } else if (snapshot.hasData) {
-          List<Post>? post = snapshot.data;
-          return ListView.builder(
-            itemCount: post?.length,
-            itemBuilder: (context, i) {
-              return Card(
-                child: ListTile(
-                  title: Text(
-                    post![i].title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  subtitle: Text(post[i].body),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => CommentPage(id: post[i].id),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Posts'),
+      ),
+      body: FutureBuilder<List<Post>>(
+        future: fetchPost(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('No Internet!'),
+            );
+          } else if (snapshot.hasData) {
+            List<Post>? post = snapshot.data;
+            return ListView.builder(
+              itemCount: post?.length,
+              itemBuilder: (context, i) {
+                return Card(
+                  child: ListTile(
+                    title: Text(
+                      post![i].title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
                       ),
-                    );
-                  },
-                ),
-              );
-            },
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
+                    ),
+                    subtitle: Text(post[i].body),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => CommentPage(id: post[i].id),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 }

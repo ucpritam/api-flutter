@@ -13,9 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'API',
       debugShowCheckedModeBanner: false,
-      home: HomePage(
-        title: 'API',
-      ),
+      home: HomePage(),
     );
   }
 }

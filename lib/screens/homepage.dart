@@ -2,11 +2,10 @@ import 'package:api_app/screens/posts.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../screens/albums.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -14,6 +13,32 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  String status = 'Offline';
+  var subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.none) {
+        setState(() {
+          status = 'Offline';
+        });
+      } else {
+        setState(() {
+          status = 'Online';
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    subscription.cancel();
+  }
 
   final screens = [
     const PostPage(),
@@ -29,10 +54,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: SafeArea(child: screens[_selectedIndex]),
+      body: status == 'Online'
+          ? SafeArea(child: screens[_selectedIndex])
+          : const Center(
+              child: Text(
+                  'Unable to fetch data. Please check your internet connection!'),
+            ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.blue,
         selectedItemColor: Colors.white,

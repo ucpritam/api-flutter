@@ -22,44 +22,49 @@ class AlbumPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Album>>(
-      future: fetchAlbum(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Center(
-            child: Text('An error has occurred!'),
-          );
-        } else if (snapshot.hasData) {
-          List<Album>? album = snapshot.data;
-          return ListView.builder(
-            itemCount: album?.length,
-            itemBuilder: (context, i) {
-              return Card(
-                child: ListTile(
-                  title: Text(
-                    album![i].title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => PhotoPage(id: album[i].id),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Albums'),
+      ),
+      body: FutureBuilder<List<Album>>(
+        future: fetchAlbum(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('No Internet!'),
+            );
+          } else if (snapshot.hasData) {
+            List<Album>? album = snapshot.data;
+            return ListView.builder(
+              itemCount: album?.length,
+              itemBuilder: (context, i) {
+                return Card(
+                  child: ListTile(
+                    title: Text(
+                      album![i].title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
                       ),
-                    );
-                  },
-                ),
-              );
-            },
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => PhotoPage(id: album[i].id),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 }

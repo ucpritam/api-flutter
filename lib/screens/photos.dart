@@ -28,13 +28,15 @@ class PhotoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Photos'),
+      ),
       body: FutureBuilder<List<Photo>>(
         future: fetchPhotos(http.Client(), id),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(
-              child: Text('An error has occurred!'),
+              child: Text('No Internet!'),
             );
           } else if (snapshot.hasData) {
             return PhotosList(
