@@ -25,6 +25,7 @@ class AlbumPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Albums'),
+        automaticallyImplyLeading: false,
       ),
       body: FutureBuilder<List<Album>>(
         future: fetchAlbum(),

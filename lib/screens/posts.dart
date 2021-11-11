@@ -30,6 +30,7 @@ class _PostPageState extends State<PostPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Posts'),
+        automaticallyImplyLeading: false,
       ),
       body: FutureBuilder<List<Post>>(
         future: fetchPost(),
