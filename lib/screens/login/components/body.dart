@@ -77,7 +77,7 @@ class AccountCheck extends StatelessWidget {
           Text(
             "Register!",
             style: TextStyle(
-              color: PrimaryColor,
+              color: primaryColor,
               fontWeight: FontWeight.w500,
             ),
           )
@@ -99,7 +99,7 @@ class ForgotPassword extends StatelessWidget {
       children: const <Widget>[
         Text(
           'Forgot Password?',
-          style: TextStyle(color: PrimaryColor, fontWeight: FontWeight.w500),
+          style: TextStyle(color: primaryColor, fontWeight: FontWeight.w500),
         ),
       ],
     );
@@ -220,7 +220,7 @@ class TextFieldContainer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       width: size.width * 0.8,
       decoration: BoxDecoration(
-        color: PrimaryLightColor,
+        color: primaryLightColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: child,
