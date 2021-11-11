@@ -1,4 +1,5 @@
-import 'package:api_app/screens/homepage.dart';
+import 'package:api_app/screens/login/login.dart';
+import 'package:api_app/style.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,10 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'API',
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      title: 'API',
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: LoginPage(),
     );
   }
 }

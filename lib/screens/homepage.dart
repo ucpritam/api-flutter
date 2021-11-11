@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                   'Unable to fetch data. Please check your internet connection!'),
             ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.indigo,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         items: const <BottomNavigationBarItem>[
