@@ -9,26 +9,23 @@ class AccountCheck extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 140, bottom: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const <Widget>[
-          Text(
-            "Don't have an account? ",
-            style: TextStyle(
-              color: Colors.black54,
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const <Widget>[
+        Text(
+          "Don't have an account? ",
+          style: TextStyle(
+            color: Colors.black54,
           ),
-          Text(
-            "Register!",
-            style: TextStyle(
-              color: primaryColor,
-              fontWeight: FontWeight.w500,
-            ),
-          )
-        ],
-      ),
+        ),
+        Text(
+          "Register!",
+          style: TextStyle(
+            color: primaryColor,
+            fontWeight: FontWeight.w500,
+          ),
+        )
+      ],
     );
   }
 }

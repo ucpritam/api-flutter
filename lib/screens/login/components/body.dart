@@ -52,6 +52,7 @@ class Body extends StatelessWidget {
               },
             ),
             const ForgotPassword(),
+            SizedBox(height: size.height * 0.15),
             const AccountCheck(),
           ],
         ),
