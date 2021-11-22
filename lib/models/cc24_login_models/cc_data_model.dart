@@ -6,14 +6,14 @@ part 'cc_data_model.g.dart';
 class Data {
   String AuthToken;
   String EncryptedToken;
-  UserInfo userInfo;
+  Map<String, dynamic> UserInfo;
 
   Data(
       {required this.AuthToken,
       required this.EncryptedToken,
-      required this.userInfo});
+      required this.UserInfo});
 
-  factory Data.fromJson(Map<String, dynamic> json) => _$CCDataFromJson(json);
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CCDataToJson(this);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }

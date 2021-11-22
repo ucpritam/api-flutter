@@ -16,9 +16,9 @@ class UserInfo {
   String UserGroupID;
   String Username;
   String Password;
-  Name name;
-  ContactDetails contactDetails;
-  AddressDetails addressDetails;
+  Map<String, dynamic> Name;
+  Map<String, dynamic> ContactDetails;
+  Map<String, dynamic> AddressDetails;
   String Jid;
   String FullJid;
   String XmppDomain;
@@ -42,9 +42,9 @@ class UserInfo {
     required this.UserGroupID,
     required this.Username,
     required this.Password,
-    required this.name,
-    required this.contactDetails,
-    required this.addressDetails,
+    required this.Name,
+    required this.ContactDetails,
+    required this.AddressDetails,
     required this.Jid,
     required this.FullJid,
     required this.XmppDomain,

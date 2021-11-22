@@ -35,9 +35,10 @@ Future<MobileLoginParam> loginCred(String username, String password) async {
     var ccres = CC24Response.fromJson(res);
 
     var temp = jsonDecode(ccres.Data);
-    Data.fromJson(temp);
+    var ccdata = Data.fromJson(temp);
 
-    return MobileLoginParam.fromJson(jsonDecode(response.body));
+    // return MobileLoginParam.fromJson(jsonDecode(response.body));
+    return MobileLoginParam(username: username, password: password);
   } else {
     throw Exception('Login Error');
   }
