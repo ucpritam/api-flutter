@@ -17,7 +17,7 @@ Photo _$PhotoFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PhotoToJson(Photo instance) => <String, dynamic>{
-      'userId': instance.albumId,
+      'albumId': instance.albumId,
       'id': instance.id,
       'title': instance.title,
       'url': instance.url,
