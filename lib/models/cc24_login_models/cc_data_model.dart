@@ -4,14 +4,17 @@ part 'cc_data_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Data {
-  String AuthToken;
-  String EncryptedToken;
-  Map<String, dynamic> UserInfo;
+  @JsonKey(name: 'AuthToken')
+  final String authToken;
+  @JsonKey(name: 'EncryptedToken')
+  final String encryptedToken;
+  @JsonKey(name: 'UserInfo')
+  final UserInfo userInfo;
 
   Data(
-      {required this.AuthToken,
-      required this.EncryptedToken,
-      required this.UserInfo});
+      {required this.authToken,
+      required this.encryptedToken,
+      required this.userInfo});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 

@@ -7,56 +7,80 @@ part 'cc_userinfo_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class UserInfo {
-  int UserStatus;
-  int XmppStatus;
-  int UserType;
-  int SubscriberType;
-  String ImageName;
-  int UserLocation;
-  String UserGroupID;
-  String Username;
-  String Password;
-  Map<String, dynamic> Name;
-  Map<String, dynamic> ContactDetails;
-  Map<String, dynamic> AddressDetails;
-  String Jid;
-  String FullJid;
-  String XmppDomain;
-  String SubscriberId;
-  String? GroupName;
-  String Phone;
-  String Mobile;
-  String DisplayName;
-  int Gender;
-  String Designation;
-  String ImageURL;
-  int NumberOfInstance;
+  @JsonKey(name: 'UserStatus')
+  final int userStatus;
+  @JsonKey(name: 'XmppStatus')
+  final int xmppStatus;
+  @JsonKey(name: 'UserType')
+  final int userType;
+  @JsonKey(name: 'SubscriberType')
+  final int subscriberType;
+  @JsonKey(name: 'ImageName')
+  final String imageName;
+  @JsonKey(name: 'UserLocation')
+  final int userLocation;
+  @JsonKey(name: 'UserGroupID')
+  final String userGroupID;
+  @JsonKey(name: 'Username')
+  final String username;
+  @JsonKey(name: 'Password')
+  final String password;
+  @JsonKey(name: 'Name')
+  final Name name;
+  @JsonKey(name: 'ContactDetails')
+  final ContactDetails contactDetails;
+  @JsonKey(name: 'AddressDetails')
+  final AddressDetails addressDetails;
+  @JsonKey(name: 'Jid')
+  final String jid;
+  @JsonKey(name: 'FullJid')
+  final String fullJid;
+  @JsonKey(name: 'XmppDomain')
+  final String xmppDomain;
+  @JsonKey(name: 'SubscriberId')
+  final String subscriberId;
+  @JsonKey(name: 'GroupName')
+  final String? groupName;
+  @JsonKey(name: 'Phone')
+  final String phone;
+  @JsonKey(name: 'Mobile')
+  final String mobile;
+  @JsonKey(name: 'DisplayName')
+  final String displayName;
+  @JsonKey(name: 'Gender')
+  final int gender;
+  @JsonKey(name: 'Designation')
+  final String designation;
+  @JsonKey(name: 'ImageURL')
+  final String imageURL;
+  @JsonKey(name: 'NumberOfInstance')
+  final int numberOfInstance;
 
   UserInfo({
-    required this.UserStatus,
-    required this.XmppStatus,
-    required this.UserType,
-    required this.SubscriberType,
-    required this.ImageName,
-    required this.UserLocation,
-    required this.UserGroupID,
-    required this.Username,
-    required this.Password,
-    required this.Name,
-    required this.ContactDetails,
-    required this.AddressDetails,
-    required this.Jid,
-    required this.FullJid,
-    required this.XmppDomain,
-    required this.SubscriberId,
-    required this.GroupName,
-    required this.Phone,
-    required this.Mobile,
-    required this.DisplayName,
-    required this.Gender,
-    required this.Designation,
-    required this.ImageURL,
-    required this.NumberOfInstance,
+    required this.userStatus,
+    required this.xmppStatus,
+    required this.userType,
+    required this.subscriberType,
+    required this.imageName,
+    required this.userLocation,
+    required this.userGroupID,
+    required this.username,
+    required this.password,
+    required this.name,
+    required this.contactDetails,
+    required this.addressDetails,
+    required this.jid,
+    required this.fullJid,
+    required this.xmppDomain,
+    required this.subscriberId,
+    required this.groupName,
+    required this.phone,
+    required this.mobile,
+    required this.displayName,
+    required this.gender,
+    required this.designation,
+    required this.imageURL,
+    required this.numberOfInstance,
   });
 
   factory UserInfo.fromJson(Map<String, dynamic> json) =>

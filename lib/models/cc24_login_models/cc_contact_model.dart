@@ -3,28 +3,38 @@ part 'cc_contact_model.g.dart';
 
 @JsonSerializable()
 class ContactDetails {
-  String Phone1;
-  String Phone2;
-  String Mobile1;
-  String Mobile1_Service_Provider;
-  String Mobile2;
-  String Mobile2_Service_Provider;
-  String FAX1;
-  String FAX2;
-  String EmailID1;
-  String EmailID2;
+  @JsonKey(name: 'Phone1')
+  final String phone1;
+  @JsonKey(name: 'Phone2')
+  final String phone2;
+  @JsonKey(name: 'Mobile1')
+  final String mobile1;
+  @JsonKey(name: 'Mobile1_Service_Provider')
+  final String mobile1ServiceProvider;
+  @JsonKey(name: 'Mobile2')
+  final String mobile2;
+  @JsonKey(name: 'Mobile2_Service_Provider')
+  final String mobile2ServiceProvider;
+  @JsonKey(name: 'FAX1')
+  final String fAX1;
+  @JsonKey(name: 'FAX2')
+  final String fAX2;
+  @JsonKey(name: 'EmailID1')
+  final String emailID1;
+  @JsonKey(name: 'EmailID2')
+  final String emailID2;
 
   ContactDetails(
-      {required this.Phone1,
-      required this.Phone2,
-      required this.Mobile1,
-      required this.Mobile1_Service_Provider,
-      required this.Mobile2,
-      required this.Mobile2_Service_Provider,
-      required this.FAX1,
-      required this.FAX2,
-      required this.EmailID1,
-      required this.EmailID2});
+      {required this.phone1,
+      required this.phone2,
+      required this.mobile1,
+      required this.mobile1ServiceProvider,
+      required this.mobile2,
+      required this.mobile2ServiceProvider,
+      required this.fAX1,
+      required this.fAX2,
+      required this.emailID1,
+      required this.emailID2});
 
   factory ContactDetails.fromJson(Map<String, dynamic> json) =>
       _$ContactDetailsFromJson(json);

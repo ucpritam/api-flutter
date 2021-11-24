@@ -3,16 +3,20 @@ part 'cc_name_model.g.dart';
 
 @JsonSerializable()
 class Name {
-  String FirstName;
-  String MiddleName;
-  String LastName;
-  String Title;
+  @JsonKey(name: 'FirstName')
+  final String firstName;
+  @JsonKey(name: 'MiddleName')
+  final String middleName;
+  @JsonKey(name: 'LastName')
+  final String lastName;
+  @JsonKey(name: 'Title')
+  final String title;
 
   Name(
-      {required this.FirstName,
-      required this.MiddleName,
-      required this.LastName,
-      required this.Title});
+      {required this.firstName,
+      required this.middleName,
+      required this.lastName,
+      required this.title});
 
   factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);
 

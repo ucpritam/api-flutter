@@ -4,22 +4,29 @@ part 'cc_address_model.g.dart';
 
 @JsonSerializable()
 class AddressDetails {
-  String AddrLine1;
-  String AddrLine2;
-  String City;
-  String State;
-  String Country;
-  String Zip;
-  String MapURL;
+  @JsonKey(name: 'AddrLine1')
+  final String addrLine1;
+  @JsonKey(name: 'AddrLine2')
+  final String addrLine2;
+  @JsonKey(name: 'City')
+  final String city;
+  @JsonKey(name: 'State')
+  final String state;
+  @JsonKey(name: 'Country')
+  final String country;
+  @JsonKey(name: 'Zip')
+  final String zip;
+  @JsonKey(name: 'MapURL')
+  final String mapURL;
 
   AddressDetails(
-      {required this.AddrLine1,
-      required this.AddrLine2,
-      required this.City,
-      required this.State,
-      required this.Country,
-      required this.Zip,
-      required this.MapURL});
+      {required this.addrLine1,
+      required this.addrLine2,
+      required this.city,
+      required this.state,
+      required this.country,
+      required this.zip,
+      required this.mapURL});
 
   factory AddressDetails.fromJson(Map<String, dynamic> json) =>
       _$AddressDetailsFromJson(json);

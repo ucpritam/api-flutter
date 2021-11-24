@@ -8,16 +8,16 @@ part of 'cc_name_model.dart';
 
 Name _$NameFromJson(Map<String, dynamic> json) {
   return Name(
-    FirstName: json['FirstName'] as String,
-    MiddleName: json['MiddleName'] as String,
-    LastName: json['LastName'] as String,
-    Title: json['Title'] as String,
+    firstName: json['FirstName'] as String,
+    middleName: json['MiddleName'] as String,
+    lastName: json['LastName'] as String,
+    title: json['Title'] as String,
   );
 }
 
 Map<String, dynamic> _$NameToJson(Name instance) => <String, dynamic>{
-      'FirstName': instance.FirstName,
-      'MiddleName': instance.MiddleName,
-      'LastName': instance.LastName,
-      'Title': instance.Title,
+      'FirstName': instance.firstName,
+      'MiddleName': instance.middleName,
+      'LastName': instance.lastName,
+      'Title': instance.title,
     };
